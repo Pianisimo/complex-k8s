@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: postgres
+  ports:
+    - port: 5432 # How other pods or objects inside the cluster access this.
+      targetPort: 5432 # Port on the target pod we provide access to.
+#     nodePort omit nodePort because this cluster ip is not accessible from the outside.
